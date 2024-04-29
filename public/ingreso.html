@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INICIO SESIÓN</title>
     <link rel="stylesheet" href="./style.css/ingreso.css">
+   <script src="./scripts/ingreso.js" defer></script>
+    
 </head>
 <body>
     <div class="formulario">
         <h1>INICIAR SESIÓN</h1>
         <form method="post">
             <div class="username">
-                <input type="text" required>
-                <label>USUARIO</label>
+                <input type="text" placeholder="Correo" id="correo">
             </div>
 
             <div class="username">
-                <input type="password" required>
-                <label>CONTRASEÑA</label>
+                <input type="password" placeholder="Contraseña" id="contrasena">
             </div>
 
             <div class="recordar">¿Olvido su contraseña?
             </div>
-            <input type="submit" value="Iniciar">
+            <input type="submit" onclick="iniciarSesion()">
             <div class="registrarse">
                 <a href="index.html">PSICOLOMBIA</a>
             </div>
