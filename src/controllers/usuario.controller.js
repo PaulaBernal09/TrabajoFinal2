@@ -27,7 +27,7 @@ return res.json({error: "error al mostrar los datos"+ error });
 
 //LÓGICA PARA CREAR USUARIOS
 export const postUsuario = async(req, res) => {
-    
+
     try{
         let datosUsuario = req.body;
         let nuevoUsuario = await usuarioModel.create(datosUsuario);
@@ -37,7 +37,6 @@ return res.json({error: "error al crear el usuario", message:error.message });
     }
 
 }
-
 //LÓGICA PARA MODIFICAR USUARIOS
 export const putUsuario = async(req, res) => {
     try{

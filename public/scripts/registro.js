@@ -1,48 +1,40 @@
-console.log('Hola soy registro');
+const form = document.getElementById("form")
 
-const registrarUsuario = async () => {
-
+form.addEventListener("submit", e =>{
+    e.preventDefault()
     const nombreCompleto = document.getElementById('nombreCompleto').value;
     const correo = document.getElementById('correo').value;
     const contrasena = document.getElementById('contrasena').value;
-
-
-
-    console.log(nombreCompleto, correo, contrasena);
-
-
-
     const datosUsuario = {
         nombreCompleto,
         correo,
         contrasena
     }
+    registrarUsuario(datosUsuario)
+})
+const registrarUsuario = async (user) => {
+    try {
+        const respuesta = await fetch('http://localhost:9000/api/crearUsuario',
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }, // Aquí está la corrección
+                body: JSON.stringify(user)
 
-    console.log(datosUsuario);
+            }
+        );
 
-try {
-const respuesta = await fetch('http://localhost:9000/api/crearUsuario',
-{
-method:'POST',
-Headers:{ 'Content-Type':'application/json'},
-body:JSON.stringify(datosUsuario)
-
-}
-);
-
-const nuevoUsuario = await respuesta.json();
-console.log('Usuario creado exitosamente', nuevoUsuario);
-
-if(nuevoUsuario){
-    alert('Registro exitoso');
-    window.location.href = './ingreso.html'
-}else{
-    alert('Ups! error de registro, intentelo nuevamente')
-}
+        const nuevoUsuario = await respuesta.json();
+        if (nuevoUsuario.correo) {
+            alert('Registro exitoso');
+            window.location.href = './ingreso.html'
+        } else {
+            console.log(nuevoUsuario);
+            alert('Ups! error de registro, intentelo nuevamente')
+        }
 
 
-}catch(error) {
-    console.error('Error al registrar usuario, error');
-}
+    } catch (error) {
+        console.error(error);
+    }
 
 }
