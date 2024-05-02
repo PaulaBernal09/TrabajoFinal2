@@ -15,7 +15,11 @@ body {
     background-color: #1b1726;
 }
 img{
-    max-width: 100%;
+    /* max-width: 100%; */
+    width: 500px;
+height: 500px;
+
+
 }
 
 .container {
@@ -189,7 +193,7 @@ h3 {
 .btn-2 {
     padding: 5px 25px;
     background-color:#FF5A2C;
-    margin-right: 0;
+    margin-right: 500px;
 }
 .contact {
     padding: 150px 300px;
